@@ -12,12 +12,15 @@ app.use(bodyParser.json());
 
 // SMTP Transport Configuration
 const transporter = nodemailer.createTransport({
-    host: 'mail.makrosum.net',
+    host: 'proxy.uzmanposta.com',
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-        user: 'info@rsmart.com.tr',
+        user: 'no-reply@rsmart.com.tr',
         pass: 'Smart.2026'
+    },
+    tls: {
+        rejectUnauthorized: false
     }
 });
 
@@ -35,7 +38,7 @@ app.post('/send-mail', async (req, res) => {
     const { name, email, phone, subject, message } = req.body;
 
     const mailOptions = {
-        from: '"R-SMART Web" <info@rsmart.com.tr>', // Sender address
+        from: '"R-SMART Web" <no-reply@rsmart.com.tr>', // Sender address
         to: 'info@rsmart.com.tr', // List of receivers
         replyTo: email, // Allow replying to the user's email
         subject: `[Web Form] ${subject} - ${name}`,

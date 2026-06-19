@@ -28,11 +28,11 @@ module.exports = async function handler(req, res) {
 
         // SMTP Transport Configuration
         const transporter = nodemailer.createTransport({
-            host: 'mail.makrosum.net',
+            host: 'proxy.uzmanposta.com',
             port: 465,
             secure: true,
             auth: {
-                user: 'info@rsmart.com.tr',
+                user: 'no-reply@rsmart.com.tr',
                 pass: 'Smart.2026'
             },
             tls: {
@@ -41,7 +41,7 @@ module.exports = async function handler(req, res) {
         });
 
         const mailOptions = {
-            from: '"R-SMART Web" <info@rsmart.com.tr>',
+            from: '"R-SMART Web" <no-reply@rsmart.com.tr>',
             to: 'info@rsmart.com.tr',
             replyTo: email,
             subject: `[Web Form] ${subject} - ${name}`,
